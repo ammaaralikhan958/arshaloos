@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>For Arshaloos 🌸</title>
+
+<style>
+
+body{
+margin:0;
+font-family: 'Poppins', sans-serif;
+background:linear-gradient(135deg,#ffd6e7,#d6ecff);
+height:100vh;
+overflow:hidden;
+text-align:center;
+}
+
+.container{
+position:absolute;
+top:50%;
+left:50%;
+transform:translate(-50%,-50%);
+}
+
+h1{
+color:#ff5fa2;
+font-size:45px;
+}
+
+button{
+padding:14px 28px;
+font-size:18px;
+border:none;
+border-radius:30px;
+margin:20px;
+cursor:pointer;
+background:#ff9fcb;
+color:white;
+box-shadow:0 6px 15px rgba(0,0,0,0.1);
+transition:0.3s;
+}
+
+button:hover{
+transform:scale(1.1);
+}
+
+#no{
+position:absolute;
+}
+
+.hidden{
+display:none;
+}
+
+.dino{
+width:200px;
+animation:bounce 2s infinite;
+}
+
+@keyframes bounce{
+0%,100%{transform:translateY(0)}
+50%{transform:translateY(-20px)}
+}
+
+.message{
+font-size:20px;
+max-width:520px;
+margin:auto;
+line-height:1.6;
+color:#444;
+}
+
+.final{
+opacity:0;
+margin-top:25px;
+font-size:24px;
+color:#ff4fa0;
+transition:opacity 2s;
+}
+
+.flower{
+position:absolute;
+top:-50px;
+width:30px;
+animation:fall linear forwards;
+}
+
+@keyframes fall{
+to{
+transform:translateY(110vh) rotate(360deg);
+}
+}
+
+.cloud{
+position:absolute;
+top:20px;
+width:120px;
+opacity:0.8;
+animation:float 20s linear infinite;
+}
+
+@keyframes float{
+0%{transform:translateX(-200px)}
+100%{transform:translateX(120vw)}
+}
+
+.sparkle{
+position:absolute;
+font-size:18px;
+animation:twinkle 2s infinite;
+}
+
+@keyframes twinkle{
+0%,100%{opacity:0.3}
+50%{opacity:1}
+}
+
+</style>
+</head>
+
+<body>
+
+<!-- floating clouds -->
+<img class="cloud" src="https://i.imgur.com/9QZ7qYB.png">
+<img class="cloud" style="top:80px;animation-duration:30s" src="https://i.imgur.com/9QZ7qYB.png">
+
+<div class="container" id="question">
+
+<h1>Hi Arshaloos 🌸</h1>
+<h2>How are you?</h2>
+
+<button onclick="yes()">I'm ham pam</button>
+<button id="no" onmouseover="move()">I'm sam sam</button>
+
+</div>
+
+<div class="container hidden" id="result">
+
+<img class="dino" src="https://i.imgur.com/6RMhx.gif">
+
+<div class="message">
+
+<p>Do you know Chintu is soooo proud of you 💗</p>
+
+<p>
+For the woman you are<br>
+For the woman you are becoming<br>
+For showing up every day<br>
+For your strength<br>
+And for everything you do
+</p>
+
+<p>You deserve everything in the world 🌸</p>
+
+</div>
+
+<div class="final" id="finalLine">
+
+And one more thing…<br>
+I'm really lucky to know you.
+
+</div>
+
+</div>
+
+<audio id="music" loop>
+<source src="https://cdn.pixabay.com/download/audio/2022/03/15/audio_5b9e7a1f8c.mp3">
+</audio>
+
+<script>
+
+function move(){
+
+let btn=document.getElementById("no");
+
+let x=Math.random()*window.innerWidth*0.8;
+let y=Math.random()*window.innerHeight*0.8;
+
+btn.style.left=x+"px";
+btn.style.top=y+"px";
+
+}
+
+function yes(){
+
+document.getElementById("question").classList.add("hidden");
+document.getElementById("result").classList.remove("hidden");
+
+document.getElementById("music").play();
+
+setInterval(createFlower,250);
+setInterval(createSparkle,600);
+
+setTimeout(()=>{
+document.getElementById("finalLine").style.opacity=1;
+},6000);
+
+}
+
+function createFlower(){
+
+let flower=document.createElement("img");
+
+flower.src="https://i.imgur.com/Q3Z4J.gif";
+flower.classList.add("flower");
+
+flower.style.left=Math.random()*window.innerWidth+"px";
+flower.style.animationDuration=(4+Math.random()*3)+"s";
+
+document.body.appendChild(flower);
+
+setTimeout(()=>{
+flower.remove();
+},7000);
+
+}
+
+function createSparkle(){
+
+let sparkle=document.createElement("div");
+
+sparkle.classList.add("sparkle");
+sparkle.innerHTML="✨";
+
+sparkle.style.left=Math.random()*window.innerWidth+"px";
+sparkle.style.top=Math.random()*window.innerHeight+"px";
+
+document.body.appendChild(sparkle);
+
+setTimeout(()=>{
+sparkle.remove();
+},2000);
+
+}
+
+</script>
+
+</body>
+</html>
